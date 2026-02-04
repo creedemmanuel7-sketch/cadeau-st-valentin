@@ -1,0 +1,434 @@
+/* ========================================
+   VARIABLES & BASE
+======================================== */
+:root {
+    --primary-color: #ff4b4b;
+    --secondary-color: #ff8585;
+    --bg-color: #fff5f5;
+    --text-dark: #333;
+    --white: #ffffff;
+    --shadow-light: 0 4px 15px rgba(255, 75, 75, 0.1);
+    --shadow-medium: 0 10px 30px rgba(255, 75, 75, 0.2);
+    --shadow-heavy: 0 15px 40px rgba(255, 75, 75, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* ========================================
+   ÉCRAN D'ACCUEIL
+======================================== */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4b4b 0%, #ff8585 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#welcome-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-content {
+    text-align: center;
+    color: white;
+}
+
+.heart-pulse {
+    font-size: 120px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.heart-pulse:hover {
+    transform: scale(1.2);
+}
+
+.welcome-text {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInText 2s ease 1s forwards;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+}
+
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+
+/* ========================================
+   CONTAINER PRINCIPAL
+======================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.header-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.main-title {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    animation: slideDown 1s ease;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #666;
+    font-style: italic;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ========================================
+   COMPTEUR
+======================================== */
+.countdown-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+    margin: 40px auto;
+    max-width: 900px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.countdown-item {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.countdown-value {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 75, 75, 0.1);
+}
+
+.countdown-divider {
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+}
+
+/* ========================================
+   SECTION TITLE
+======================================== */
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0 40px 0;
+    gap: 20px;
+}
+
+.section-title .line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    max-width: 200px;
+}
+
+.section-title .text {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ========================================
+   GALERIE PHOTOS
+======================================== */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin: 60px 0;
+    padding: 20px;
+}
+
+.photo-card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet polaroid avec rotation aléatoire */
+.photo-card:nth-child(3n+1) { transform: rotate(-2deg); }
+.photo-card:nth-child(3n+2) { transform: rotate(1deg); }
+.photo-card:nth-child(3n+3) { transform: rotate(-1deg); }
+
+.photo-card:hover {
+    transform: scale(1.08) rotate(0deg) translateY(-10px);
+    box-shadow: var(--shadow-heavy);
+    z-index: 10;
+}
+
+/* Effet de brillance au survol */
+.photo-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.photo-card:hover::before {
+    transform: translateX(100%);
+}
+
+.love-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.caption {
+    margin-top: 15px;
+    font-family: 'Brush Script MT', 'Comic Sans MS', cursive;
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.4;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ========================================
+   SECTION SURPRISE
+======================================== */
+.surprise-section {
+    text-align: center;
+    margin: 80px 0 60px 0;
+}
+
+.surprise-hint {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.surprise-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    padding: 20px 50px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.surprise-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.surprise-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.surprise-btn:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: var(--shadow-heavy);
+}
+
+.surprise-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+.love-footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.love-footer p {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.footer-date {
+    font-size: 0.9rem !important;
+    color: #999 !important;
+    font-weight: normal !important;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .countdown-box {
+        flex-direction: column;
+    }
+    
+    .countdown-divider {
+        transform: rotate(90deg);
+    }
+    
+    .countdown-value {
+        font-size: 1.5rem;
+    }
+    
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .love-img {
+        height: 250px;
+    }
+    
+    .section-title .text {
+        font-size: 1.4rem;
+    }
+    
+    .surprise-btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
+}
+
+/* ========================================
+   ANIMATIONS SCROLL (AOS)
+======================================== */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}

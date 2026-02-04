@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Toi ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- Écran d'accueil avec animation -->
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <div class="heart-pulse">❤️</div>
+            <h2 class="welcome-text">Clique sur le cœur pour découvrir...</h2>
+        </div>
+    </div>
+
+    <!-- Musique de fond (autoplay avec interaction) -->
+    <audio id="bgMusic" loop>
+        <source src="music/background.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container" id="mainContent">
+        <div class="header-section">
+            <h1 class="main-title">Notre Histoire ❤️</h1>
+            <div class="subtitle">Depuis que nos chemins se sont croisés...</div>
+        </div>
+        
+        <div id="countdown" class="countdown-box">
+            <div class="countdown-item">
+                <div class="countdown-label">On se connaît depuis</div>
+                <div id="countSinceStart" class="countdown-value">Chargement...</div>
+            </div>
+            <div class="countdown-divider">💕</div>
+            <div class="countdown-item">
+                <div class="countdown-label">Officiellement ensemble depuis</div>
+                <div id="countOfficial" class="countdown-value">Chargement...</div>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <span class="line"></span>
+            <span class="text">Nos Moments Magiques</span>
+            <span class="line"></span>
+        </div>
+
+        <div class="photo-gallery">
+            <div class="photo-card" data-aos="fade-up">
+                <img src="images/photo1.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Le jour que j'ai le plus kiffé de toute ma vie ❤️</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/photo2.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Le jour où j'ai été vraiment heureux de voir ton si beau sourire ❤️</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/photo3.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Le jour où j'ai failli tout gâcher 😅</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="images/photo4.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Le jour de la confirmation de Mael où j'ai dansé comme un malade 😂</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="images/photo5.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">On avait trop d'Aura le jour là quoi 🙅</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="500">
+                <img src="images/photo6.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Wooooaaa comme c'est booooowww 😌😁</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="600">
+                <img src="images/photo7.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">C'était zoo le jour là même si je ne m'en souviens plus trop</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="700">
+                <img src="images/photo8.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Qu'est ce qui s'est passé le jour là même ?</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="800">
+                <img src="images/photo9.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Je te promets de faire de toi ma femme, mon amour ❤️, la mère de mes enfants, mon socle, ma confidente</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="900">
+                <img src="images/photo10.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Je t'aime plus que tout au monde ma chérie ❤️</p>
+            </div>
+            
+            <div class="photo-card" data-aos="fade-up" data-aos-delay="1000">
+                <img src="images/photo11.jpg" alt="Notre souvenir" class="love-img">
+                <p class="caption">Toi + Moi = ❤️ Inchallah</p>
+            </div>
+        </div>
+
+        <div class="surprise-section">
+            <p class="surprise-hint">Psst... Il y a une surprise pour toi 👇</p>
+            <button id="surpriseBtn" class="surprise-btn">
+                <span class="btn-text">Clique ici ! 💝</span>
+            </button>
+        </div>
+
+        <footer class="love-footer">
+            <p>Avec tout mon amour ❤️</p>
+            <p class="footer-date">Créé spécialement pour toi - 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
